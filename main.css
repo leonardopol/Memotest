@@ -1,20 +1,19 @@
 .cuadro {
-    height: 90px;
-    width: 90px;
+    margin: 3px;
+    height: 120px;
+    width: 120px;
+}
+#cuadro1 {
+    
     background-color: green;
 }
-.cuadro1 {
-    height: 90px;
-    width: 90px;
+#cuadro2 {
+    
     background-color: yellow;
 }
-.cuadro2 {
-    height: 90px;
-    width: 90px;
+#cuadro3 {
     background-color: blue;
 }
-.cuadro3 {
-    height: 90px;
-    width: 90px;
+#cuadro4 {
     background-color: red;
 }
