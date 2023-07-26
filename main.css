@@ -1,0 +1,20 @@
+.cuadro {
+    height: 90px;
+    width: 90px;
+    background-color: green;
+}
+.cuadro1 {
+    height: 90px;
+    width: 90px;
+    background-color: yellow;
+}
+.cuadro2 {
+    height: 90px;
+    width: 90px;
+    background-color: blue;
+}
+.cuadro3 {
+    height: 90px;
+    width: 90px;
+    background-color: red;
+}
