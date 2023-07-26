@@ -3,17 +3,17 @@
     height: 120px;
     width: 120px;
 }
-#cuadro1 {
+#cuadro1, #cuadro6, #cuadro11, #cuadro16 {
     
     background-color: green;
 }
-#cuadro2 {
+#cuadro2, #cuadro7, #cuadro12, #cuadro15 {
     
     background-color: yellow;
 }
-#cuadro3 {
+#cuadro3, #cuadro8, #cuadro10, #cuadro13 {
     background-color: blue;
 }
-#cuadro4 {
+#cuadro4, #cuadro5, #cuadro9, #cuadro14 {
     background-color: red;
 }
