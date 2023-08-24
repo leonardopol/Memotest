@@ -1,13 +1,34 @@
 .cuadro {
     margin: 3px;
-    height: 120px;
-    width: 120px;
+    height: 140px;
+    width: 100px;
 }
-#cuadro1, #cuadro6, #cuadro11, #cuadro16 {
+.width {
+    width: 140%;
+  }
+
+#minutos {
+    width: 1%;
+}
+#segundos {
+    width: 1%;
+}
+#tiempo {
+    width: 8%;
+}
+.oculto {
+    display: none;
+}
+/*.max {
+    max-width: 100%;
+}*/
+
+/*#cuadro1, #cuadro6, #cuadro11, #cuadro16 {
     
-    background-color: green;
-}
-#cuadro2, #cuadro7, #cuadro12, #cuadro15 {
+    /*background-image: url(./imagenes/playing-card-back.jpg);*/
+    /*background-color: green;
+}*/
+/*#cuadro2, #cuadro7, #cuadro12, #cuadro15 {
     
     background-color: yellow;
 }
@@ -16,4 +37,4 @@
 }
 #cuadro4, #cuadro5, #cuadro9, #cuadro14 {
     background-color: red;
-}
+}*/
