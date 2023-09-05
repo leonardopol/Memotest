@@ -1,10 +1,11 @@
 .cuadro {
-    margin: 3px;
+    margin: 2px;
+    padding: 2px;
     height: 140px;
     width: 100px;
 }
 .width {
-    width: 140%;
+    width: 100%;
   }
 
 #minutos {
@@ -18,4 +19,11 @@
 }
 .oculto {
     display: none;
+}
+#boton-empezar {
+    width: 8%;
+}
+#titulo {
+    
+    background-color: yellow;
 }
