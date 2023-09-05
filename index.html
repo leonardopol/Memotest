@@ -9,6 +9,10 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
+  <div class="row justify-content-center h6" id="titulo">JUEGO MEMOTEST</div>
+  <div class="col row justify-content-md-center">
+    <button id="boton-empezar" type="submit" class="btn btn-success">Empezar</button>
+  </div>
     <div class="container text-center">
       <div class="row justify-content-md-center">
         <div class="col col-lg-2" id="tituloTiempo">
@@ -23,6 +27,7 @@
       </div>
     </div>
     <div class="container text-center">
+      <div class="row d-flex justify-content-center h1" id="intentos"></div>
         <div class="row d-flex justify-content-center row-cols-6">
           <div class="col cuadro"><img src="./imagenes/playing-card-back.jpg" id="cuadro0" alt="carta-cero" class="width"></div>
           <div class="col cuadro"><img src="./imagenes/playing-card-back.jpg" id="cuadro1" alt="carta-uno" class="width"></div>
@@ -48,7 +53,7 @@
             <div class="col cuadro"><img src="./imagenes/playing-card-back.jpg" id="cuadro15" alt="carta-quince" class="width"></div>
           </div>
       </div>
-      <div class="row d-flex justify-content-center" id="intentos"></div>
+      
       <script src='index.js'></script>
 </body>
 </html>
