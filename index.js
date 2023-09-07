@@ -3,7 +3,7 @@ let secuenciaMaquina = [];
 let secuenciaUsuario = [];
 let guardarCarta = [];
 let verificar = [];
-let k = 0;
+
 let barajarSecuenciaMaquina;
 let aciertos = 0;
 let intentos = 0;
@@ -12,8 +12,9 @@ let indiceCartaB = 1;
 let cartasGuardadas = 2;
 let segundos = 0;
 let minutos = 0;
+let flag = false;
 const NUMERO_CARTAS = 8;
-let prueba = [];
+
 
 document.querySelector("#boton-empezar").onclick = empezar;
 
@@ -75,16 +76,25 @@ function entradaJugador(e){
     verificar.push(cuadro);
     
     if(verificar.length === 2){
+        
         if(verificar[0] != verificar[1]){
 
             voltearCarta($cuadro);
         }
-        /*if(verificar[0] === verificar[1]){
-            //verificar.pop();
+        if(verificar[0] === verificar[1]){
+            console.log("primera linea " + verificar);
+           
+            document.querySelector(`#${verificar[0]}`).src='./imagenes/playing-card-back.jpg';
+            //document.querySelector(`#${verificar[1]}`).src='./imagenes/playing-card-back.jpg';
             
-            //secuenciaUsuario.pop();
-            //guardarCarta.pop();
-        }*/
+            verificar = [];
+            console.log(verificar);
+            secuenciaUsuario = [];
+            guardarCarta = [];
+            //indiceCartaA -= 2;
+            //indiceCartaB -= 2;
+            cartasGuardadas = 2;
+        }
     }
     if(verificar.length === 1){
        
@@ -104,6 +114,7 @@ function voltearCarta($cuadro){
 function compararCarta(guardarCarta, secuenciaUsuario){
     if(guardarCarta.length === cartasGuardadas){
         if(guardarCarta[indiceCartaA] != guardarCarta[indiceCartaB]){
+            console.log("no son iguales");
             setTimeout(function(){
                 document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./imagenes/playing-card-back.jpg';
                 document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./imagenes/playing-card-back.jpg';
@@ -114,15 +125,19 @@ function compararCarta(guardarCarta, secuenciaUsuario){
                 
                 intentos++;
             }, 1000);
-        } else {
+        }
+         if(guardarCarta[indiceCartaA] === guardarCarta[indiceCartaB]) {
+            console.log("son iguales");
             setTimeout(function(){
             indiceCartaA += 2;
             indiceCartaB += 2;
             cartasGuardadas += 2;
+            console.log(verificar);
             verificar.forEach(function(cuadro){
                 
                 document.querySelector(`#${cuadro}`).className = 'oculto';
             });
+            console.log("ultima linea " + verificar);
             verificar = [];
         }, 1000);
             aciertos++;
