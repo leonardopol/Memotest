@@ -133,36 +133,31 @@ function compararCarta(guardarCarta, secuenciaUsuario){
             indiceCartaB += 2;
             cartasGuardadas += 2;
             console.log(verificar);
-            verificar.forEach(function(cuadro){
-                
-                document.querySelector(`#${cuadro}`).className = 'oculto';
-            });
+            ocultarAciertos();
+            
             console.log("ultima linea " + verificar);
             verificar = [];
-        }, 1000);
+            }, 1000);
             aciertos++;
             intentos++;
+            contarAciertos(aciertos);
             
-            if(aciertos === 8){
-                
-                document.querySelector('#intentos').innerHTML = `Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''`;
-                document.querySelector('#tiempo').className = 'oculto';
-                document.querySelector('#tituloTiempo').className = 'oculto';
-            }
         }
     }
 }
 
-function bloquearUsuario(){
-    document.querySelectorAll('.cuadro').forEach(function($cuadro) {
-        $cuadro.onclick = function() {
-            return;
-        };
-    });
+function contarAciertos(aciertos){
+    if(aciertos === 8){
+                
+        document.querySelector('#intentos').innerHTML = `Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''`;
+        document.querySelector('#tiempo').className = 'oculto';
+        document.querySelector('#tituloTiempo').className = 'oculto';
+    }
 }
 
-function desbloquearUsuario() {
-    document.querySelectorAll('.cuadro').forEach(function($cuadro) {
-      $cuadro.onclick = entradaJugador;
+function ocultarAciertos(){
+    verificar.forEach(function(cuadro){
+                
+        document.querySelector(`#${cuadro}`).className = 'oculto';
     });
 }
