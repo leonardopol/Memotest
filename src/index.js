@@ -32,12 +32,12 @@ function ocultarBoton(){
 
 function repartirCartas(){
     for(let i = 0; i < NUMERO_CARTAS; i++){
-        secuenciaMaquina[i] = `./imagenes/${i}.jpg`;
+        secuenciaMaquina[i] = `./src/imagenes/${i}.jpg`;
         if(i === 7){
             i = 0;
             for(let j = 8; j < 16; j++ ){
                 
-                secuenciaMaquina[j] = `./imagenes/${i}.jpg`;
+                secuenciaMaquina[j] = `./src/imagenes/${i}.jpg`;
                 i = i + 1;
             }
         }
@@ -108,8 +108,8 @@ function compararCarta(guardarCarta, secuenciaUsuario){
     if(guardarCarta.length === cartasGuardadas){
         if(guardarCarta[indiceCartaA] != guardarCarta[indiceCartaB]){
             setTimeout(function(){
-                document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./imagenes/playing-card-back.jpg';
-                document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./imagenes/playing-card-back.jpg';
+                document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./src/imagenes/playing-card-back.jpg';
+                document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./src/imagenes/playing-card-back.jpg';
                 indiceCartaA += 2;
                 indiceCartaB += 2;
                 cartasGuardadas += 2;
