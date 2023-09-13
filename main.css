@@ -14,8 +14,9 @@
 #segundos {
     width: 1%;
 }
-#tiempo {
-    width: 8%;
+#tituloTiempo {
+    
+    color: red;
 }
 .oculto {
     display: none;
@@ -25,5 +26,8 @@
 }
 #titulo {
     
-    background-color: yellow;
+    background-color:lightblue
+}
+#intentos {
+    display: none;
 }
