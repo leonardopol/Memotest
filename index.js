@@ -12,7 +12,6 @@ let indiceCartaB = 1;
 let cartasGuardadas = 2;
 let segundos = 0;
 let minutos = 0;
-let flag = false;
 const NUMERO_CARTAS = 8;
 
 
@@ -72,33 +71,27 @@ function seleccionar(){
 function entradaJugador(e){
 
     const $cuadro = e.target;
-    const cuadro = $cuadro.id;
-    verificar.push(cuadro);
-    
-    if(verificar.length === 2){
+    if($cuadro.classList.contains('cuadro')){
+        return;
+    } else {
+        const cuadro = $cuadro.id;
+        verificar.push(cuadro);
         
-        if(verificar[0] != verificar[1]){
+        if(verificar.length === 2){
+            
+            if(verificar[0] != verificar[1]){
 
+                voltearCarta($cuadro);
+            }
+            if(verificar[0] === verificar[1]){
+                verificar.pop();
+                return;
+            }
+        }
+        if(verificar.length === 1){
+        
             voltearCarta($cuadro);
         }
-        if(verificar[0] === verificar[1]){
-            console.log("primera linea " + verificar);
-           
-            document.querySelector(`#${verificar[0]}`).src='./imagenes/playing-card-back.jpg';
-            //document.querySelector(`#${verificar[1]}`).src='./imagenes/playing-card-back.jpg';
-            
-            verificar = [];
-            console.log(verificar);
-            secuenciaUsuario = [];
-            guardarCarta = [];
-            //indiceCartaA -= 2;
-            //indiceCartaB -= 2;
-            cartasGuardadas = 2;
-        }
-    }
-    if(verificar.length === 1){
-       
-        voltearCarta($cuadro);
     }
 }
 
@@ -114,7 +107,6 @@ function voltearCarta($cuadro){
 function compararCarta(guardarCarta, secuenciaUsuario){
     if(guardarCarta.length === cartasGuardadas){
         if(guardarCarta[indiceCartaA] != guardarCarta[indiceCartaB]){
-            console.log("no son iguales");
             setTimeout(function(){
                 document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./imagenes/playing-card-back.jpg';
                 document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./imagenes/playing-card-back.jpg';
@@ -127,15 +119,11 @@ function compararCarta(guardarCarta, secuenciaUsuario){
             }, 1000);
         }
          if(guardarCarta[indiceCartaA] === guardarCarta[indiceCartaB]) {
-            console.log("son iguales");
             setTimeout(function(){
             indiceCartaA += 2;
             indiceCartaB += 2;
             cartasGuardadas += 2;
-            console.log(verificar);
             ocultarAciertos();
-            
-            console.log("ultima linea " + verificar);
             verificar = [];
             }, 1000);
             aciertos++;
@@ -147,9 +135,9 @@ function compararCarta(guardarCarta, secuenciaUsuario){
 }
 
 function contarAciertos(aciertos){
-    if(aciertos === 8){
-                
-        document.querySelector('#intentos').innerHTML = `Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''`;
+    if(aciertos === NUMERO_CARTAS){
+              
+        document.querySelector('#intentos').innerHTML = `<strong>Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''</strong>`;
         document.querySelector('#tiempo').className = 'oculto';
         document.querySelector('#tituloTiempo').className = 'oculto';
     }
