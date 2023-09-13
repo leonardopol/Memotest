@@ -4,7 +4,7 @@ let secuenciaUsuario = [];
 let guardarCarta = [];
 let verificar = [];
 
-let barajarSecuenciaMaquina;
+let secuenciaMaquinaAleatoria = [];
 let aciertos = 0;
 let intentos = 0;
 let indiceCartaA = 0;
@@ -45,7 +45,7 @@ function repartirCartas(){
 }
 
 function mezclarCartas(){
-    barajarSecuenciaMaquina = secuenciaMaquina.sort(function () {
+    secuenciaMaquinaAleatoria = secuenciaMaquina.sort(function () {
        return Math.random() - 0.5;
     });
 }
@@ -99,7 +99,7 @@ function voltearCarta($cuadro){
     const $carta = $cuadro.id;
     const soloNumero = Number($carta.replace(/[^0-9]+/g, ""));
     secuenciaUsuario.push($carta);
-    document.querySelector(`#${$carta}`).src=barajarSecuenciaMaquina[soloNumero];
+    document.querySelector(`#${$carta}`).src=secuenciaMaquinaAleatoria[soloNumero];
     guardarCarta.push(document.querySelector(`#${$carta}`).src);
     compararCarta(guardarCarta, secuenciaUsuario);
 }
@@ -108,38 +108,33 @@ function compararCarta(guardarCarta, secuenciaUsuario){
     if(guardarCarta.length === cartasGuardadas){
         if(guardarCarta[indiceCartaA] != guardarCarta[indiceCartaB]){
             setTimeout(function(){
-                document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./src/imagenes/playing-card-back.jpg';
-                document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./src/imagenes/playing-card-back.jpg';
-                indiceCartaA += 2;
-                indiceCartaB += 2;
-                cartasGuardadas += 2;
-                verificar = [];
-                
+                mostrarContracara(secuenciaUsuario);
+                incrementarIndiceCartas();
+                incrementarCartasGuardadas();
+                reiniciarVerificacion();
                 intentos++;
             }, 1000);
         }
          if(guardarCarta[indiceCartaA] === guardarCarta[indiceCartaB]) {
             setTimeout(function(){
-            indiceCartaA += 2;
-            indiceCartaB += 2;
-            cartasGuardadas += 2;
-            ocultarAciertos();
-            verificar = [];
+                incrementarIndiceCartas();
+                incrementarCartasGuardadas();
+                ocultarAciertos();
+                reiniciarVerificacion();
             }, 1000);
             aciertos++;
             intentos++;
-            contarAciertos(aciertos);
+            finalizarJuego(aciertos);
             
         }
     }
 }
 
-function contarAciertos(aciertos){
+function finalizarJuego(aciertos){
     if(aciertos === NUMERO_CARTAS){
               
-        document.querySelector('#intentos').innerHTML = `<strong>Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''</strong>`;
-        document.querySelector('#tiempo').className = 'oculto';
-        document.querySelector('#tituloTiempo').className = 'oculto';
+        mensajeFinDeJuego();
+        ocultarTiempo();
     }
 }
 
@@ -148,4 +143,29 @@ function ocultarAciertos(){
                 
         document.querySelector(`#${cuadro}`).className = 'oculto';
     });
+}
+
+function retrazarAciertos(){
+    
+}
+function reiniciarVerificacion(){
+    verificar = [];
+}
+function incrementarIndiceCartas(){
+    indiceCartaA += 2;
+    indiceCartaB += 2;
+}
+function incrementarCartasGuardadas(){
+    cartasGuardadas += 2;
+}
+function ocultarTiempo(){
+    document.querySelector('#tiempo').className = 'oculto';
+    document.querySelector('#tituloTiempo').className = 'oculto';
+}
+function mensajeFinDeJuego(){
+    document.querySelector('#intentos').innerHTML = `<strong>Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''</strong>`;
+}
+function mostrarContracara(secuenciaUsuario){
+    document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./src/imagenes/playing-card-back.jpg';
+    document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./src/imagenes/playing-card-back.jpg';
 }
