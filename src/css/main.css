@@ -3,6 +3,7 @@
     padding: 2px;
     height: 140px;
     width: 100px;
+    cursor: pointer;
 }
 .width {
     width: 100%;
@@ -28,6 +29,7 @@
     
     background-color:lightblue
 }
-#intentos {
+#finDeJuego {
     display: none;
+    color:green;
 }

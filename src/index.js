@@ -1,18 +1,18 @@
 
 let secuenciaMaquina = [];
 let secuenciaUsuario = [];
-let guardarCarta = [];
-let verificar = [];
-
+let secuenciaImagen = [];
+let secuenciaVerificacion = [];
 let secuenciaMaquinaAleatoria = [];
+
 let aciertos = 0;
 let intentos = 0;
-let indiceCartaA = 0;
-let indiceCartaB = 1;
-let cartasGuardadas = 2;
+let indiceCuadroA = 0;
+let indiceCuadroB = 1;
+let cuadrosGuardados = 2;
 let segundos = 0;
 let minutos = 0;
-const NUMERO_CARTAS = 8;
+const NUMERO_IMAGENES = 8;
 
 
 document.querySelector("#boton-empezar").onclick = empezar;
@@ -21,7 +21,7 @@ function empezar(){
     ocultarBoton();
     repartirCartas();
     mezclarCartas();
-    contadorTiempo();
+    contarTiempo();
     seleccionar();
 
 }
@@ -31,7 +31,7 @@ function ocultarBoton(){
 }
 
 function repartirCartas(){
-    for(let i = 0; i < NUMERO_CARTAS; i++){
+    for(let i = 0; i < NUMERO_IMAGENES; i++){
         secuenciaMaquina[i] = `./src/imagenes/${i}.jpg`;
         if(i === 7){
             i = 0;
@@ -50,7 +50,7 @@ function mezclarCartas(){
     });
 }
 
-function contadorTiempo(){
+function contarTiempo(){
     window.setInterval(function(){
         document.querySelector('#tiempo').innerHTML = `${minutos}${':'}${segundos}`;
         if(segundos === 59){
@@ -74,21 +74,21 @@ function entradaJugador(e){
     if($cuadro.classList.contains('cuadro')){
         return;
     } else {
-        const cuadro = $cuadro.id;
-        verificar.push(cuadro);
+        const idCuadro = $cuadro.id;
+        secuenciaVerificacion.push(idCuadro);
         
-        if(verificar.length === 2){
+        if(secuenciaVerificacion.length === 2){
             
-            if(verificar[0] != verificar[1]){
+            if(secuenciaVerificacion[0] != secuenciaVerificacion[1]){
 
                 voltearCarta($cuadro);
             }
-            if(verificar[0] === verificar[1]){
-                verificar.pop();
+            if(secuenciaVerificacion[0] === secuenciaVerificacion[1]){
+                secuenciaVerificacion.pop();
                 return;
             }
         }
-        if(verificar.length === 1){
+        if(secuenciaVerificacion.length === 1){
         
             voltearCarta($cuadro);
         }
@@ -96,29 +96,29 @@ function entradaJugador(e){
 }
 
 function voltearCarta($cuadro){
-    const $carta = $cuadro.id;
-    const soloNumero = Number($carta.replace(/[^0-9]+/g, ""));
-    secuenciaUsuario.push($carta);
-    document.querySelector(`#${$carta}`).src=secuenciaMaquinaAleatoria[soloNumero];
-    guardarCarta.push(document.querySelector(`#${$carta}`).src);
-    compararCarta(guardarCarta, secuenciaUsuario);
+    const idCuadro = $cuadro.id;
+    const soloNumero = Number(idCuadro.replace(/[^0-9]+/g, ""));
+    secuenciaUsuario.push(idCuadro);
+    document.querySelector(`#${idCuadro}`).src=secuenciaMaquinaAleatoria[soloNumero];
+    secuenciaImagen.push(document.querySelector(`#${idCuadro}`).src);
+    compararCarta(secuenciaImagen, secuenciaUsuario);
 }
 
-function compararCarta(guardarCarta, secuenciaUsuario){
-    if(guardarCarta.length === cartasGuardadas){
-        if(guardarCarta[indiceCartaA] != guardarCarta[indiceCartaB]){
+function compararCarta(secuenciaImagen, secuenciaUsuario){
+    if(secuenciaImagen.length === cuadrosGuardados){
+        if(secuenciaImagen[indiceCuadroA] != secuenciaImagen[indiceCuadroB]){
             setTimeout(function(){
                 mostrarContracara(secuenciaUsuario);
-                incrementarIndiceCartas();
-                incrementarCartasGuardadas();
+                incrementarIndiceCuadros();
+                incrementarCuadrosGuardados();
                 reiniciarVerificacion();
                 intentos++;
             }, 1000);
         }
-         if(guardarCarta[indiceCartaA] === guardarCarta[indiceCartaB]) {
+         if(secuenciaImagen[indiceCuadroA] === secuenciaImagen[indiceCuadroB]) {
             setTimeout(function(){
-                incrementarIndiceCartas();
-                incrementarCartasGuardadas();
+                incrementarIndiceCuadros();
+                incrementarCuadrosGuardados();
                 ocultarAciertos();
                 reiniciarVerificacion();
             }, 1000);
@@ -131,41 +131,41 @@ function compararCarta(guardarCarta, secuenciaUsuario){
 }
 
 function finalizarJuego(aciertos){
-    if(aciertos === NUMERO_CARTAS){
+    if(aciertos === NUMERO_IMAGENES){
               
-        mensajeFinDeJuego();
+        mensajearFinDeJuego();
         ocultarTiempo();
     }
 }
 
 function ocultarAciertos(){
-    verificar.forEach(function(cuadro){
+    secuenciaVerificacion.forEach(function(cuadro){
                 
         document.querySelector(`#${cuadro}`).className = 'oculto';
     });
 }
 
-function retrazarAciertos(){
-    
-}
 function reiniciarVerificacion(){
-    verificar = [];
+    secuenciaVerificacion = [];
 }
-function incrementarIndiceCartas(){
-    indiceCartaA += 2;
-    indiceCartaB += 2;
+function incrementarIndiceCuadros(){
+    indiceCuadroA += 2;
+    indiceCuadroB += 2;
 }
-function incrementarCartasGuardadas(){
-    cartasGuardadas += 2;
+function incrementarCuadrosGuardados(){
+    cuadrosGuardados += 2;
 }
 function ocultarTiempo(){
     document.querySelector('#tiempo').className = 'oculto';
     document.querySelector('#tituloTiempo').className = 'oculto';
 }
-function mensajeFinDeJuego(){
-    document.querySelector('#intentos').innerHTML = `<strong>Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''</strong>`;
+function mensajearFinDeJuego(){
+    setTimeout(function(){
+        document.querySelector('#finDeJuego').innerHTML = `<strong>Felicidades!! tardaste ${minutos}' ${':'} ${segundos}''</strong>`;
+    }, 1000);
+    
 }
 function mostrarContracara(secuenciaUsuario){
-    document.querySelector(`#${secuenciaUsuario[indiceCartaA]}`).src='./src/imagenes/playing-card-back.jpg';
-    document.querySelector(`#${secuenciaUsuario[indiceCartaB]}`).src='./src/imagenes/playing-card-back.jpg';
+    document.querySelector(`#${secuenciaUsuario[indiceCuadroA]}`).src='./src/imagenes/playing-card-back.jpg';
+    document.querySelector(`#${secuenciaUsuario[indiceCuadroB]}`).src='./src/imagenes/playing-card-back.jpg';
 }
