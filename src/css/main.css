@@ -1,13 +1,17 @@
 .cuadro {
-    margin: 2px;
+    margin: 4px;
     padding: 2px;
     height: 140px;
     width: 100px;
     cursor: pointer;
 }
-.width {
+
+.fila-cuadro {
+    height: 23vh;
+}
+/*.width {
     width: 100%;
-  }
+  }*/
 
 #minutos {
     width: 1%;
@@ -23,6 +27,9 @@
     display: none;
 }
 #boton-empezar {
+    width: 8%;
+}
+#boton-reset {
     width: 8%;
 }
 #titulo {
