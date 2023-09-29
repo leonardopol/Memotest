@@ -9,13 +9,14 @@
     <link rel='stylesheet' type='text/css' media='screen' href='./src/css/main.css'>
 </head>
 <body>
-  <div id="tablero">
-  <div class="row justify-content-center h6" id="titulo">JUEGO MEMOTEST</div>
-  <div class="col row justify-content-md-center">
+  <div class="row justify-content-center h6 fila-juego" id="titulo">JUEGO MEMOTEST</div>
+  <div class="col row justify-content-md-center h-100">
     <button id="boton-empezar" type="submit" class="btn btn-success">Empezar</button>
   </div>
-    <div class="container text-center">
-      <div class="row justify-content-md-center">
+  <div id="tablero">
+  
+    <div class="container text-center h-100">
+      <div class="row justify-content-md-center fila-juego">
         <div class="col col-lg-2" id="tituloTiempo">
           <strong>  Tiempo: </strong>
         </div>
@@ -27,31 +28,36 @@
         </div>
       </div>
     </div>
-    <div class="container text-center">
-      <div class="row d-flex justify-content-center display-1" id="finDeJuego"></div>
-        <div class="row d-flex justify-content-center row-cols-6">
-          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro0" alt="carta-cero" class="width"></div>
-          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro1" alt="carta-uno" class="width"></div>
-          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro2" alt="carta-dos" class="width"></div>
-          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro3" alt="carta-tres" class="width"></div>
+    <div class="container text-center h-100">
+      <div class="row d-flex justify-content-center display-1 fila-juego" id="finDeJuego">
+        <div class="col row justify-content-md-center">
+          <button id="boton-reset" type="reset" class="btn btn-danger oculto">Reset</button>
         </div>
-        <div class="row d-flex justify-content-center row-cols-6">
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro4" alt="carta-cuatro" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro5" alt="carta-cinco" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro6" alt="carta-seis" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro7" alt="carta-siete" class="width"></div>
+      </div>
+      
+        <div class="row d-flex justify-content-center row-cols-6 fila-juego">
+          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro0" alt="carta-cero" class="fila-cuadro"></div>
+          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro1" alt="carta-uno" class="fila-cuadro"></div>
+          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro2" alt="carta-dos" class="fila-cuadro"></div>
+          <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro3" alt="carta-tres" class="fila-cuadro"></div>
+        </div>
+        <div class="row d-flex justify-content-center row-cols-6 fila-juego">
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro4" alt="carta-cuatro" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro5" alt="carta-cinco" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro6" alt="carta-seis" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro7" alt="carta-siete" class="fila-cuadro"></div>
           </div>
-          <div class="row d-flex justify-content-center row-cols-6">
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro8" alt="carta-ocho" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro9" alt="carta-nueve" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro10" alt="carta-diez" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro11" alt="carta-once" class="width"></div>
+          <div class="row d-flex justify-content-center row-cols-6 fila-juego">
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro8" alt="carta-ocho" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro9" alt="carta-nueve" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro10" alt="carta-diez" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro11" alt="carta-once" class="fila-cuadro"></div>
           </div>
-          <div class="row d-flex justify-content-center row-cols-6">
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro12" alt="carta-doce" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro13" alt="carta-trece" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro14" alt="carta-catorce" class="width"></div>
-            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro15" alt="carta-quince" class="width"></div>
+          <div class="row d-flex justify-content-center row-cols-6 fila-juego">
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro12" alt="carta-doce" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro13" alt="carta-trece" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro14" alt="carta-catorce" class="fila-cuadro"></div>
+            <div class="col cuadro"><img src="./src/imagenes/playing-card-back.jpg" id="cuadro15" alt="carta-quince" class="fila-cuadro"></div>
           </div>
       </div>
       </div>
