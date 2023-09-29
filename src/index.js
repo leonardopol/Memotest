@@ -71,6 +71,8 @@ function seleccionar(){
 function entradaJugador(e){
 
     const $cuadro = e.target;
+    //console.log($cuadro.classList.contains('cuadro'));
+
     if($cuadro.classList.contains('cuadro')){
         return;
     } else {
