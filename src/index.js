@@ -171,3 +171,5 @@ function mostrarContracara(secuenciaUsuario){
     document.querySelector(`#${secuenciaUsuario[indiceCuadroA]}`).src='./src/imagenes/playing-card-back.jpg';
     document.querySelector(`#${secuenciaUsuario[indiceCuadroB]}`).src='./src/imagenes/playing-card-back.jpg';
 }
+
+
